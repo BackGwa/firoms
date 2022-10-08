@@ -11,6 +11,10 @@
 
 <br>
 
+<b><p align="center"><a href='https://discord.com/api/oauth2/authorize?client_id=1028181026763198464&permissions=8&scope=bot'>서버에 초대하기</a><p></b>
+
+<br><br>
+
 > 누구든지 언제나 **Pull Requests**를 통하여 새로운 기능을 추가하실 수 있습니다.
 
 <br>
