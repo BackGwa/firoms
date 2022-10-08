@@ -9,18 +9,16 @@ from discord.commands import Option
 # [변수] : 기본 변수 설정
 bot = discord.Bot()
 token = secret.token(True)
-id = secret.server_id(True)
 
 
 # [이벤트] : 봇 온라인
 @bot.event
 async def on_ready():
     await bot.change_presence(status=discord.Status.online)
-    
+
 
 # [자소크 철학단] : 자소크력 가져오기
 @bot.slash_command(
-    guild_ids = id,
     description='자소크력 가져오기'
 )
 
@@ -39,7 +37,6 @@ async def tozasok(ctx,
 
 # [뤼미에르 공화국] : 숫자 변환기
 @bot.slash_command(
-    guild_ids = id,
     description='뤼미에르 공화국 숫자 변환기'
 )
 
