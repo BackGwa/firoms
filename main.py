@@ -1,5 +1,3 @@
-from http import server
-from urllib import request
 import ext.lumiere as lumiere
 import ext.zasok as zasok
 
