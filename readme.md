@@ -7,7 +7,7 @@
 
 <br>
 
-<p align="center"><b>피롬스</b><small><small>[firoms]</small></small>는 <b>사트</b><small><small>[Sat]</small></small>와 지구의 차원을 잇는 디스코드 봇입니다.<br><b>피롬스</b><small><small>[firoms]</small></small>를 사용하여 더욱 <b>사트</b><small><small>[Sat]</small></small>에 집중해보세요!</p>
+<p align="center"><b>피롬스</b>[firoms]는 <b>사트</b>[Sat]와 지구의 차원을 잇는 디스코드 봇입니다.<br><b>피롬스</b>[firoms]를 사용하여 더욱 <b>사트</b>[Sat]에 집중해보세요!</p>
 
 <br>
 
