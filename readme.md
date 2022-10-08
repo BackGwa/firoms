@@ -11,7 +11,7 @@
 
 <br>
 
-> <br><p align="center">누구든지 언제나 **Pull Requests**를 통하여 새로운 기능을 추가하실 수 있습니다.</p><br>
+> 누구든지 언제나 **Pull Requests**를 통하여 새로운 기능을 추가하실 수 있습니다.
 
 <br>
 
