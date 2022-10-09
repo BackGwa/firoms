@@ -4,7 +4,7 @@ from sat_datetime import SatDatetime
 from datetime import datetime
 
 
-# [명령어] : 자소크력 가져오기
+# [명령어] : 서력으로 자소크력 가져오기
 def zacalen(year, month, day, hour, minute, second):
     
     now = datetime.now()
@@ -24,7 +24,7 @@ def zacalen(year, month, day, hour, minute, second):
     return result
 
 
-# [명령어] : 서력으로 자소크력 가져오기
+# [명령어] : 자소크력으로 서력 가져오기
 def inzacalen(year, month, day):
     
     ZasokNow = SatDatetime(year, month, day)
