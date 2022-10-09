@@ -4,7 +4,6 @@ import ext.vote as votepy
 
 import secret
 import discord
-import time
 
 from discord.commands import Option
 
@@ -67,6 +66,7 @@ async def vote(ctx,
                     await interaction.message.edit(content=f'{editmsg}')
 
                 await ctx.respond(vote_result, ephemeral=True)
+                await interaction.response.defer()
                 
             @discord.ui.button(label=f'{second}', style=discord.ButtonStyle.primary)
             async def choiceB(self, button: discord.ui.Button, interaction: discord.Interaction):
@@ -85,6 +85,7 @@ async def vote(ctx,
                     await interaction.message.edit(content=f'{editmsg}')
                 
                 await ctx.respond(vote_result, ephemeral=True)
+                await interaction.response.defer()
 
             if(third != ''):
                 @discord.ui.button(label=f'{third}', style=discord.ButtonStyle.primary)
@@ -104,6 +105,7 @@ async def vote(ctx,
                         await interaction.message.edit(content=f'{editmsg}')
                     
                     await ctx.respond(vote_result, ephemeral=True)
+                    await interaction.response.defer()
                 
                 if(fourth != ''):
                     @discord.ui.button(label=f'{fourth}', style=discord.ButtonStyle.primary)
@@ -123,7 +125,8 @@ async def vote(ctx,
                             await interaction.message.edit(content=f'{editmsg}')
                         
                         await ctx.respond(vote_result, ephemeral=True)
-        
+                        await interaction.response.defer()
+                    
         if(vote == 2):              
             result = (f'**{title}**\n{content}\n> {first} : \n> {second} : ')
         elif(vote == 3):
@@ -133,7 +136,7 @@ async def vote(ctx,
         
         global sendmsg
         sendmsg = await ctx.respond(result, view=Button())
-        
+
 
 # [자소크 철학단] : 자소크력 가져오기
 @bot.slash_command(
