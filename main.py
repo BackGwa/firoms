@@ -21,7 +21,7 @@ async def on_ready():
 
 # [추가 기능] : 투표
 @bot.slash_command(
-    description='투표를 실시합니다.'
+    description='투표를 실시합니다'
 )
 async def vote(ctx,
         title: Option(str, '투표의 제목을 입력합니다.'),
@@ -124,20 +124,20 @@ async def vote(ctx,
                         
                         await ctx.respond(vote_result, ephemeral=True)
         
-        if(vote == 2):                   
+        if(vote == 2):              
             result = (f'**{title}**\n{content}\n> {first} : \n> {second} : ')
         elif(vote == 3):
             result = (f'**{title}**\n{content}\n> {first} : \n> {second} : \n> {third} : ')
         elif(vote == 4):
             result = (f'**{title}**\n{content}\n> {first} : \n> {second} : \n> {third} : \n> {fourth} : ')
         
-        global sendmsg 
+        global sendmsg
         sendmsg = await ctx.respond(result, view=Button())
-
+        
 
 # [자소크 철학단] : 자소크력 가져오기
 @bot.slash_command(
-    description='자소크력 가져오기'
+    description='서력 날짜를 자소크력으로 변환합니다.'
 )
 async def zacalen(ctx,
         year: Option(int, '계산할 년도를 입력합니다.') = 0,
@@ -148,13 +148,27 @@ async def zacalen(ctx,
         second: Option(int, '계산할 초를 입력합니다.') = 0
     ):
     
-    result = zasok.to_asn(year, monent, day, hour, minute, second)
+    result = zasok.zacalen(year, monent, day, hour, minute, second)
+    await ctx.respond(f'{result}')
+
+
+# [자소크 철학단] : 자소크력으로 서력 가져오기
+@bot.slash_command(
+    description='자소크력으로 서력 날짜를 가져옵니다.'
+)
+async def inzacalen(ctx,
+        year: Option(int, '계산할 년도를 입력합니다.'),
+        monent: Option(int, '계산할 월을 입력합니다.') = 1,
+        day: Option(int, '계산할 일을 입력합니다.') = 1
+    ):
+    
+    result = zasok.inzacalen(year, monent, day)
     await ctx.respond(f'{result}')
 
 
 # [뤼미에르 공화국] : 숫자 변환기
 @bot.slash_command(
-    description='뤼미에르 공화국 숫자 변환기'
+    description='뤼미에르 공화국의 숫자로 변환합니다.'
 )
 async def numcvt(ctx, arabic: Option(int, '아라비아 숫자')):
     
