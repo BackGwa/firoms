@@ -43,7 +43,7 @@ async def vote(ctx,
         
     elif((vote < 4) and (fourth != '')) or ((vote < 3) and (third != '')):
         await ctx.respond('**선택지의 이름이 초과되었거나 잘못된 접근입니다!**\n이러한 명령어는 일부 내용이 손실될 수 있습니다.', ephemeral=True)
-        
+            
     else:
         class Button(discord.ui.View):
             
