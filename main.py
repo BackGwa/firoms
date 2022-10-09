@@ -1,10 +1,10 @@
-import re
 import ext.lumiere as lumiere
 import ext.zasok as zasok
 import ext.vote as votepy
 
 import secret
 import discord
+import time
 
 from discord.commands import Option
 
@@ -34,29 +34,101 @@ async def vote(ctx,
     ):
 
     result = votepy.v_scan(vote, third, fourth)
+    count = [0, 0, 0, 0]
 
     if(result == 'valid'):
         class Button(discord.ui.View):
+            
+            global dataid
+            dataid = []
+            
             @discord.ui.button(label=f'{first}', style=discord.ButtonStyle.primary)
             async def choiceA(self, button: discord.ui.Button, interaction: discord.Interaction):
-                await ctx.respond('ButtonEvent FIRST')
+                
+                global dataid
+                global sendmsg
+                
+                if(interaction.user.id in dataid):
+                    vote_result = votepy.errmsg(1)
+                else:
+                    vote_result = votepy.errmsg(0)
+                    dataid += [interaction.user.id]
+                    count[0] += 1
+                    
+                    editmsg = votepy.msg_refrash(title, content, vote, count, first, second, third, fourth)
+                    time.sleep(0.1)
+                    await sendmsg.edit_original_message(content=f'{editmsg}')
+
+                await ctx.respond(vote_result, ephemeral=True)
                 
             @discord.ui.button(label=f'{second}', style=discord.ButtonStyle.primary)
             async def choiceB(self, button: discord.ui.Button, interaction: discord.Interaction):
-                await ctx.respond('ButtonEvent SECOND')
-            
+                
+                global dataid
+                global sendmsg
+                
+                if(interaction.user.id in dataid):
+                    vote_result = votepy.errmsg(1)
+                else:
+                    vote_result = votepy.errmsg(0)
+                    dataid += [interaction.user.id]
+                    count[1] += 1
+                    
+                    editmsg = votepy.msg_refrash(title, content, vote, count, first, second, third, fourth)
+                    time.sleep(0.1)
+                    await sendmsg.edit_original_message(content=f'{editmsg}')
+                
+                await ctx.respond(vote_result, ephemeral=True)
+
             if(third != ''):
                 @discord.ui.button(label=f'{third}', style=discord.ButtonStyle.primary)
                 async def choiceC(self, button: discord.ui.Button, interaction: discord.Interaction):
-                    await ctx.respond('ButtonEvent THIRD')
+                    
+                    global dataid
+                    global sendmsg
+                    
+                    if(interaction.user.id in dataid):
+                        vote_result = votepy.errmsg(1)
+                    else:
+                        vote_result = votepy.errmsg(0)
+                        dataid += [interaction.user.id]
+                        count[2] += 1
+                        
+                        editmsg = votepy.msg_refrash(title, content, vote, count, first, second, third, fourth)
+                        time.sleep(0.1)
+                        await sendmsg.edit_original_message(content=f'{editmsg}')
+                    
+                    await ctx.respond(vote_result, ephemeral=True)
                 
                 if(fourth != ''):
                     @discord.ui.button(label=f'{fourth}', style=discord.ButtonStyle.primary)
                     async def choiceD(self, button: discord.ui.Button, interaction: discord.Interaction):
-                        await ctx.respond('ButtonEvent FOUTRH')
-                 
-        result = (f'**{title}**\n{content}')
-        await ctx.respond(result, view=Button())
+                        
+                        global dataid
+                        global sendmsg
+                        
+                        if(interaction.user.id in dataid):
+                            vote_result = votepy.errmsg(1)
+                        else:
+                            vote_result = votepy.errmsg(0)
+                            dataid += [interaction.user.id]
+                            count[3] += 1
+                            
+                            editmsg = votepy.msg_refrash(title, content, vote, count, first, second, third, fourth)
+                            time.sleep(0.1)
+                            await sendmsg.edit_original_message(content=f'{editmsg}')
+                        
+                        await ctx.respond(vote_result, ephemeral=True)
+        
+        if(vote == 2):                   
+            result = (f'**{title}**\n{content}\n> {first} : \n> {second} : ')
+        elif(vote == 3):
+            result = (f'**{title}**\n{content}\n> {first} : \n> {second} : \n> {third} : ')
+        elif(vote == 4):
+            result = (f'**{title}**\n{content}\n> {first} : \n> {second} : \n> {third} : \n> {fourth} : ')
+        
+        global sendmsg 
+        sendmsg = await ctx.respond(result, view=Button()) 
         
     else:
         await ctx.respond(result, ephemeral=True)
