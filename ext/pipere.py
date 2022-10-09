@@ -50,7 +50,7 @@ def ptr(TEXT):
     
     TEXT_LEN = len(TEXT) - 1
     LEN_LOOP = 0
-    RMN_LOOP = 0
+    PPR_LOOP = 0
     CACHE = ''
     RESULT = ''
     
