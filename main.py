@@ -137,7 +137,7 @@ async def vote(ctx,
 
 # [자소크 철학단] : 자소크력 가져오기
 @bot.slash_command(
-    description='서력 날짜를 자소크력으로 변환합니다.'
+    description='서력 날짜를 자소크력으로 가져옵니다.'
 )
 async def zacalen(ctx,
         year: Option(int, '계산할 년도를 입력합니다.') = 0,
