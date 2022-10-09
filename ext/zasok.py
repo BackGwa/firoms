@@ -18,7 +18,7 @@ def zacalen(year, month, day, hour, minute, second):
         )
     ZasokNow = SatDatetime.get_from_datetime(now)
     
-    result = (f'>   **[UTC]**   __{now.year}년 {now.month:02d}월 {now.day:02d}일 {now.hour:02d}시 {now.minute:02d}분 {now.minute:02d}초__\n'
+    result = (f'>   **[UTC]**   __{now.year}년 {now.month:02d}월 {now.day:02d}일 {now.hour:02d}시 {now.minute:02d}분 {now.second:02d}초__\n'
               f'>   **[ASN]**   __{ZasokNow.year}년 {ZasokNow.month:02d}월 {ZasokNow.day:02d}일 {ZasokNow.hour:02d}시 {ZasokNow.minute:02d}분 {int(ZasokNow.second):02d}초__')
     
     return result
