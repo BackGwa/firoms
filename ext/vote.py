@@ -33,22 +33,22 @@ def msg_refrash(title, content, vote, count, a, b, c, d):
 
     if(vote == 2):                   
         result = (f'**{title}**\n{content}\n' 
-                  f'{a} ( {count[0]}표 ) : {valueA}\n'
-                  f'{b} ( {count[1]}표 ) : {valueB}')
+                  f'> {a} ( {count[0]}표 ) : {valueA}\n'
+                  f'> {b} ( {count[1]}표 ) : {valueB}')
         
     elif(vote == 3):
         result = (f'**{title}**\n{content}\n' 
-            f'{a} ( {count[0]}표 ) : {valueA}\n'
-            f'{b} ( {count[1]}표 ) : {valueB}\n'
-            f'{c} ( {count[2]}표 ) : {valueC}\n'          
+            f'> {a} ( {count[0]}표 ) : {valueA}\n'
+            f'> {b} ( {count[1]}표 ) : {valueB}\n'
+            f'> {c} ( {count[2]}표 ) : {valueC}\n'          
             )
         
     elif(vote == 4):
         result = (f'**{title}**\n{content}\n' 
-            f'{a} ( {count[0]}표 ) : {valueA}\n'
-            f'{b} ( {count[1]}표 ) : {valueB}\n'
-            f'{c} ( {count[2]}표 ) : {valueC}\n'
-            f'{d} ( {count[3]}표 ) : {valueD}\n'          
+            f'> {a} ( {count[0]}표 ) : {valueA}\n'
+            f'> {b} ( {count[1]}표 ) : {valueB}\n'
+            f'> {c} ( {count[2]}표 ) : {valueC}\n'
+            f'> {d} ( {count[3]}표 ) : {valueD}\n'          
             )
         
     return result
