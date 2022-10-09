@@ -19,7 +19,7 @@ async def on_ready():
     await bot.change_presence(status=discord.Status.online)
 
 
-# [추가 기능] : 투표
+# [추가 기능] : 투표 -> 오류 수정 
 @bot.slash_command(
     description='투표를 실시합니다.'
 )
