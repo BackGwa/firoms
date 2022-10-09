@@ -64,7 +64,6 @@ async def vote(ctx,
                     count[0] += 1
                     
                     editmsg = votepy.msg_refrash(title, content, vote, count, first, second, third, fourth)
-                    time.sleep(0.1)
                     await interaction.message.edit(content=f'{editmsg}')
 
                 await ctx.respond(vote_result, ephemeral=True)
@@ -83,7 +82,6 @@ async def vote(ctx,
                     count[1] += 1
                     
                     editmsg = votepy.msg_refrash(title, content, vote, count, first, second, third, fourth)
-                    time.sleep(0.1)
                     await interaction.message.edit(content=f'{editmsg}')
                 
                 await ctx.respond(vote_result, ephemeral=True)
@@ -103,7 +101,6 @@ async def vote(ctx,
                         count[2] += 1
                         
                         editmsg = votepy.msg_refrash(title, content, vote, count, first, second, third, fourth)
-                        time.sleep(0.1)
                         await interaction.message.edit(content=f'{editmsg}')
                     
                     await ctx.respond(vote_result, ephemeral=True)
@@ -123,7 +120,6 @@ async def vote(ctx,
                             count[3] += 1
                             
                             editmsg = votepy.msg_refrash(title, content, vote, count, first, second, third, fourth)
-                            time.sleep(0.1)
                             await interaction.message.edit(content=f'{editmsg}')
                         
                         await ctx.respond(vote_result, ephemeral=True)
