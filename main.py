@@ -17,9 +17,9 @@ token = secret.token(True)
 @bot.event
 async def on_ready():
     await bot.change_presence(status=discord.Status.online)
+    
 
-
-# [추가 기능] : 투표 -> 오류 수정 
+# [추가 기능] : 투표
 @bot.slash_command(
     description='투표를 실시합니다.'
 )
@@ -33,10 +33,18 @@ async def vote(ctx,
         fourth: Option(str, '네 번째 선택지의 이름을 입력합니다.') = ''
     ):
 
-    result = votepy.v_scan(vote, third, fourth)
     count = [0, 0, 0, 0]
 
-    if(result == 'valid'):
+    if((vote < 2) or (vote > 4)):
+        await ctx.respond('**선택지의 범위를 초과하였습니다!**\n투표의 선택지는 2~4개로 제한됩니다!', ephemeral=True)
+        
+    elif((vote > 3) and (third == '')) or ((vote > 4) and ((third == '') or (fourth == ''))):
+        await ctx.respond('**선택지의 이름이 설정되지 않았습니다!**\n투표의 선택지가 2개 이상이라면 선택지의 이름을 입력해야합니다!', ephemeral=True)
+        
+    elif((vote < 4) and (fourth != '')) or ((vote < 3) and (third != '')):
+        await ctx.respond('**선택지의 이름이 초과되었거나 잘못된 접근입니다!**\n이러한 명령어는 일부 내용이 손실될 수 있습니다.', ephemeral=True)
+        
+    else:
         class Button(discord.ui.View):
             
             global dataid
@@ -57,7 +65,7 @@ async def vote(ctx,
                     
                     editmsg = votepy.msg_refrash(title, content, vote, count, first, second, third, fourth)
                     time.sleep(0.1)
-                    await sendmsg.edit_original_message(content=f'{editmsg}')
+                    await interaction.message.edit(content=f'{editmsg}')
 
                 await ctx.respond(vote_result, ephemeral=True)
                 
@@ -76,7 +84,7 @@ async def vote(ctx,
                     
                     editmsg = votepy.msg_refrash(title, content, vote, count, first, second, third, fourth)
                     time.sleep(0.1)
-                    await sendmsg.edit_original_message(content=f'{editmsg}')
+                    await interaction.message.edit(content=f'{editmsg}')
                 
                 await ctx.respond(vote_result, ephemeral=True)
 
@@ -96,7 +104,7 @@ async def vote(ctx,
                         
                         editmsg = votepy.msg_refrash(title, content, vote, count, first, second, third, fourth)
                         time.sleep(0.1)
-                        await sendmsg.edit_original_message(content=f'{editmsg}')
+                        await interaction.message.edit(content=f'{editmsg}')
                     
                     await ctx.respond(vote_result, ephemeral=True)
                 
@@ -116,7 +124,7 @@ async def vote(ctx,
                             
                             editmsg = votepy.msg_refrash(title, content, vote, count, first, second, third, fourth)
                             time.sleep(0.1)
-                            await sendmsg.edit_original_message(content=f'{editmsg}')
+                            await interaction.message.edit(content=f'{editmsg}')
                         
                         await ctx.respond(vote_result, ephemeral=True)
         
@@ -128,10 +136,7 @@ async def vote(ctx,
             result = (f'**{title}**\n{content}\n> {first} : \n> {second} : \n> {third} : \n> {fourth} : ')
         
         global sendmsg 
-        sendmsg = await ctx.respond(result, view=Button()) 
-        
-    else:
-        await ctx.respond(result, ephemeral=True)
+        sendmsg = await ctx.respond(result, view=Button())
 
 
 # [자소크 철학단] : 자소크력 가져오기
