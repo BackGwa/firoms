@@ -183,26 +183,6 @@ async def numcvt(ctx, arabic: Option(int, '아라비아 숫자를 입력합니�
     result = lumiere.number(arabic)
     await ctx.respond(f'> **아라비아 숫자** : {arabic}\n> **뤼미에르 숫자** : {result}')
     
-
-# [피페레 제국] : 로마자 제라시아 변환기
-@bot.slash_command(
-    description='로마자를 제라시아로 변환합니다.'
-)
-async def rmjs(ctx, roman: Option(str, '로마자를 입력합니다.')):
-    
-    result = pipere.rtp(roman)
-    await ctx.respond(f'> **로마자** : {roman}\n> **제라시아** : {result}')
-
-
-# [피페레 제국] : 제라시아 로마자 변환기
-@bot.slash_command(
-    description='제라시아를 로마자로 변환합니다.'
-)
-async def jsrm(ctx, jaerasia: Option(str, '제라시아를 입력합니다.')):
-    
-    result = pipere.ptr(jaerasia)
-    await ctx.respond(f'> **제라시아** : {jaerasia}\n> **로마자** : {result}')
-    
     
 # [호출] : 봇 시작
 bot.run(token)
