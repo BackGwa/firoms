@@ -36,15 +36,19 @@ async def vote(ctx,
     count = [0, 0, 0, 0]
 
     if((vote < 2) or (vote > 4)):
-        await ctx.respond('**선택지의 범위를 초과하였습니다!**\n투표의 선택지는 2~4개로 제한됩니다!', ephemeral=True)
+        vote_result = votepy.errmsg(2)
+        await ctx.respond(embed=vote_result, ephemeral=True)
         
     elif((vote > 3) and (third == '')) or ((vote > 4) and ((third == '') or (fourth == ''))):
-        await ctx.respond('**선택지의 이름이 설정되지 않았습니다!**\n투표의 선택지가 2개 이상이라면 선택지의 이름을 입력해야합니다!', ephemeral=True)
+        vote_result = votepy.errmsg(3)
+        await ctx.respond(embed=vote_result, ephemeral=True)
         
     elif((vote < 4) and (fourth != '')) or ((vote < 3) and (third != '')):
-        await ctx.respond('**선택지의 이름이 초과되었거나 잘못된 접근입니다!**\n이러한 명령어는 일부 내용이 손실될 수 있습니다.', ephemeral=True)
+        vote_result = votepy.errmsg(4)
+        await ctx.respond(embed=vote_result, ephemeral=True)
             
     else:
+    
         class Button(discord.ui.View):
             
             global dataid
@@ -66,7 +70,7 @@ async def vote(ctx,
                     editmsg = votepy.msg_refrash(title, content, vote, count, first, second, third, fourth)
                     await interaction.message.edit(content=f'{editmsg}')
 
-                await ctx.respond(vote_result, ephemeral=True)
+                await ctx.respond(embed=vote_result, ephemeral=True)
                 await interaction.response.defer()
                 
             @discord.ui.button(label=f'{second}', style=discord.ButtonStyle.primary)
@@ -85,7 +89,7 @@ async def vote(ctx,
                     editmsg = votepy.msg_refrash(title, content, vote, count, first, second, third, fourth)
                     await interaction.message.edit(content=f'{editmsg}')
                 
-                await ctx.respond(vote_result, ephemeral=True)
+                await ctx.respond(embed=vote_result, ephemeral=True)
                 await interaction.response.defer()
 
             if(third != ''):
@@ -105,7 +109,7 @@ async def vote(ctx,
                         editmsg = votepy.msg_refrash(title, content, vote, count, first, second, third, fourth)
                         await interaction.message.edit(content=f'{editmsg}')
                     
-                    await ctx.respond(vote_result, ephemeral=True)
+                    await ctx.respond(embed=vote_result, ephemeral=True)
                     await interaction.response.defer()
                 
                 if(fourth != ''):
@@ -125,7 +129,7 @@ async def vote(ctx,
                             editmsg = votepy.msg_refrash(title, content, vote, count, first, second, third, fourth)
                             await interaction.message.edit(content=f'{editmsg}')
                         
-                        await ctx.respond(vote_result, ephemeral=True)
+                        await ctx.respond(embed=vote_result, ephemeral=True)
                         await interaction.response.defer()
                     
         if(vote == 2):              
