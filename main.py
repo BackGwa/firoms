@@ -26,7 +26,7 @@ async def on_ready():
 async def vote(ctx,
         title: Option(str, '투표의 제목을 입력합니다.'),
         content: Option(str, '투표의 내용을 입력합니다.') = '',
-        vote: Option(int, '선택지의 갯수를 입력합니다. 선택지는 2~4개로 제한됩니다.') = 2,
+        vote: Option(int, '선택지의 갯수를 입력합니다. 선택지는 2~4개로 제한됩니다. [아무 것도 입력하지 않으면 찬반투표로 설정됩니다.]') = 2,
         first: Option(str, '첫 번째 선택지의 이름을 입력합니다.') = '찬성',
         second: Option(str, '두 번째 선택지의 이름을 입력합니다.') = '반대',
         third: Option(str, '세 번째 선택지의 이름을 입력합니다.') = '',
