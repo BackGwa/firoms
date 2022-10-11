@@ -1,6 +1,6 @@
 # [확장] : 뤼미에르 공화국
 
-import lumiere_res.fontreturn as LFR
+# import fontreturn as LFR
 
 # [명령어] : 숫자 변환기
 def number(arabic):
@@ -18,8 +18,6 @@ def lumifont(roman):
     
     result = []
     
-    # Roman to Hex >> LFR.value(HEX array)
-    
-    LFR.value(result)
+    # LFR.value(result)
     
     return
